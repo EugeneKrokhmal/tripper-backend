@@ -10,7 +10,7 @@ const authMiddleware = async (req, res, next) => {
     req.user = await User.findById(decoded.userId).select('-password');
     next();
   } catch (err) {
-    res.status(401).json({ message: 'Token is not valid' });
+    res.status(401).json({ message: 'Token is not valid', logout: true });
   }
 };
 
