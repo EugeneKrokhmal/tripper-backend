@@ -595,7 +595,7 @@ exports.uploadTripImage = async (req, res) => {
 
     const filePath = `uploads/compressed-${Date.now()}-${req.file.originalname}`;
     try {
-        await sharp(req.file.path).resize(1000).jpeg({ quality: 70 }).toFile(filePath);
+        await sharp(req.file.path).rotate().resize(1000).jpeg({ quality: 70 }).toFile(filePath);
         fs.unlinkSync(req.file.path);
         trip.image = filePath;
         await trip.save();
