@@ -1,4 +1,7 @@
 const axios = require('axios');
+const sharp = require('sharp');
+const fs = require('fs');
+const path = require('path');
 const Trip = require('../models/Trip');
 const User = require('../models/User');
 const calculateSettlements = require('../helpers/settlementHelper');
