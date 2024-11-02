@@ -9,7 +9,7 @@ const calculateSettlements = require('../helpers/settlementHelper');
 require('dotenv').config(); // Load environment variables
 
 exports.createTrip = async (req, res) => {
-    const { name, description, destination, startDate, endDate } = req.body; // Add startDate and endDate to the request body
+    const { name, description, currency, destination, startDate, endDate } = req.body; // Add startDate and endDate to the request body
     const userId = req.user._id;
 
     try {
@@ -27,6 +27,7 @@ exports.createTrip = async (req, res) => {
         const trip = new Trip({
             name,
             description,
+            currency,
             creator: userId,
             participants: [userId],
             location: {
