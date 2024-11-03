@@ -1,24 +1,31 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
+const { type } = require('os');
 
 const activitySchema = new mongoose.Schema({
     name: { type: String, required: true },
-    description: { type: String, required: true },
+    description: { type: String, required: false },
     time: { type: String, required: true },
+    bookingLink: {type: String, required: false},
+    transportation: {
+        title: {type: String },
+        lat: { type: Number, required: false },
+        lng: { type: Number, required: false },
+    },
 });
 
 const tripSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    description: { type: String, required: true },
+    description: { type: String, required: false },
     image: String,
     currency: String,
     creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     location: {
-        destination: { type: String, required: true },
+        destination: { type: String, required: false },
         coordinates: {
-            lat: { type: Number, required: true },
-            lng: { type: Number, required: true },
+            lat: { type: Number, required: false },
+            lng: { type: Number, required: false },
         },
     },
     startDate: { type: Date, required: true },
@@ -27,7 +34,6 @@ const tripSchema = new mongoose.Schema({
         type: String,
         unique: true,
         default: function () {
-            // Generate a unique token for each trip
             return crypto.randomBytes(16).toString('hex');
         },
     },
