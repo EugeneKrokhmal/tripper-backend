@@ -1,13 +1,22 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
+const { sendRegistrationEmail } = require('../emailService');
 
 // Register User
 exports.register = async (req, res) => {
     const { name, email, password } = req.body;
     try {
-        const user = new User({ name, email, password });
+        // Hash the password before saving it
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Create a new user instance
+        const user = new User({ name, email, password: hashedPassword });
         await user.save();
+
+        // Send a registration email
+        await sendRegistrationEmail(email, name, password);
+
         res.status(201).json({ message: 'User registered successfully' });
     } catch (err) {
         res.status(400).json({ message: 'Error registering user', error: err });
