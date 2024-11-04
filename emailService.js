@@ -277,7 +277,7 @@ const sendRegistrationEmail = async (to, userName, password) => {
                                                                     <!--<![endif]-->
                                                                     <p class="t6"
                                                                         style="margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:500;font-style:normal;font-size:14px;text-decoration:none;text-transform:none;letter-spacing:-0.56px;direction:ltr;color:#333333;text-align:center;mso-line-height-rule:exactly;mso-text-raise:2px;">
-                                                                        <strong>Hey, ${userName},</strong>
+                                                                        <strong>Hey ${userName},</strong>
                                                                     </p>
                                                                     <h1 class="t3"
                                                                         style="margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:41px;font-weight:800;font-style:normal;font-size:39px;text-decoration:none;text-transform:none;letter-spacing:-1.56px;direction:ltr;color:#191919;text-align:center;mso-line-height-rule:exactly;mso-text-raise:1px;">
