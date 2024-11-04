@@ -339,24 +339,6 @@ const sendRegistrationEmail = async (to, userName, password) => {
                                 </table>
                             </td>
                         </tr>
-                        <tr>
-                            <td align="center">
-                                <table class="t15" role="presentation" cellpadding="0" cellspacing="0"
-                                    style="Margin-left:auto;Margin-right:auto;">
-                                    <tr>
-                                        <!--[if mso]>
-<td width="600" class="t14" style="padding:48px 50px 48px 50px;">
-<![endif]-->
-                                        <!--[if !mso]>-->
-                                        <td class="t14" style="width:500px;padding:48px 50px 48px 50px;">
-                                            <!--<![endif]-->
-                                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-                                                style="width:100% !important;"></table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
                     </table>
                 </td>
             </tr>
