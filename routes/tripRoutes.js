@@ -23,7 +23,9 @@ const {
     updateTripTimeline,
     uploadTripImage,
     settleDebt,
-} = require('../controllers/tripController');
+    addAdministrator,
+    removeAdministrator
+} = require('../controllers/trip/index');
 
 const router = express.Router();
 
@@ -69,5 +71,11 @@ router.post('/trips/:tripId/settlements/:settlementId/settle', authMiddleware, s
 
 // Image upload
 router.post('/trips/:tripId/upload-image', upload.single('image'), uploadTripImage);
+
+// Route to add an administrator (requires creator or admin permissions)
+router.post('/trips/:tripId/administrators/add', authMiddleware, addAdministrator);
+
+// Route to remove an administrator (requires creator or admin permissions)
+router.post('/trips/:tripId/administrators/remove', authMiddleware, removeAdministrator);
 
 module.exports = router;

@@ -355,7 +355,7 @@ const sendRegistrationEmail = async (to, userName, password) => {
     } catch (error) {
         console.error('Error sending registration email:', error);
         if (error.response) {
-            console.error(error.response.body); // Logs any specific SendGrid API errors
+            console.error(error.response.body);
         }
     }
 };

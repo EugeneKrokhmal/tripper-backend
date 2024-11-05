@@ -21,6 +21,7 @@ const tripSchema = new mongoose.Schema({
     currency: String,
     creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    administrators: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     location: {
         destination: { type: String, required: false },
         coordinates: {
@@ -78,6 +79,30 @@ tripSchema.methods.generateJoinToken = function () {
     const token = crypto.randomBytes(16).toString('hex');
     this.joinToken = token;
     return token;
+};
+
+// Method to check if a user is an administrator or the creator
+tripSchema.methods.isAdminOrCreator = function (userId) {
+    return (
+        this.creator.equals(userId) ||
+        this.administrators.some((adminId) => adminId.equals(userId))
+    );
+};
+
+// Method to add a user as an administrator
+tripSchema.methods.addAdministrator = function (userId) {
+    if (!this.administrators.includes(userId)) {
+        this.administrators.push(userId);
+    }
+    return this.save();
+};
+
+// Method to remove a user from administrators
+tripSchema.methods.removeAdministrator = function (userId) {
+    this.administrators = this.administrators.filter(
+        (adminId) => !adminId.equals(userId)
+    );
+    return this.save();
 };
 
 const Trip = mongoose.model('Trip', tripSchema);
