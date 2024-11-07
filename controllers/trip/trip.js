@@ -107,7 +107,7 @@ exports.getTripById = async (req, res) => {
         // If the user is not authenticated, check the join token
         else if (token) {
             if (token !== trip.joinToken) {
-                return res.status(403).json({ message: 'Invalid join token ' + token + '<br>' + trip.joinToken });
+                return res.status(403).json({ message: 'Invalid join token'});
             }
         }
         // If neither authenticated nor token present, deny access

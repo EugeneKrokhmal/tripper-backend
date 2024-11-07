@@ -7,11 +7,7 @@ const { sendRegistrationEmail } = require('../emailService');
 exports.register = async (req, res) => {
     const { name, email, password } = req.body;
     try {
-        // Hash the password before saving it
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Create a new user instance
-        const user = new User({ name, email, password: hashedPassword });
+        const user = new User({ name, email, password });
         await user.save();
 
         // Send a registration email
@@ -33,10 +29,8 @@ exports.login = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
 
-        // Generate JWT token with userId
         const token = jwt.sign({ userId: user._id, userName: user.name }, process.env.JWT_SECRET, { expiresIn: '12h' });
 
-        // Send back token and userId
         res.status(200).json({ token, userId: user._id, userName: user.name });
     } catch (err) {
         res.status(500).json({ message: 'Server error', error: err });
