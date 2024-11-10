@@ -46,7 +46,7 @@ exports.getTrips = async (req, res) => {
     try {
         const trips = await Trip.find()
             .populate('creator', 'name email')
-            .populate('participants', 'name email');
+            .populate('participants', 'name email profilePhoto')
 
         res.status(200).json(trips);
     } catch (err) {
@@ -59,7 +59,7 @@ exports.getMyTrips = async (req, res) => {
     try {
         const trips = await Trip.find({ creator: req.user._id })
             .populate('creator', 'name email')
-            .populate('participants', 'name email');
+            .populate('participants', 'name email profilePhoto')
 
         res.status(200).json(trips);
     } catch (err) {
@@ -74,7 +74,7 @@ exports.getUserTrips = async (req, res) => {
             $or: [{ creator: req.user._id }, { participants: req.user._id }],
         })
             .populate('creator', 'name email')
-            .populate('participants', 'name email');
+            .populate('participants', 'name email profilePhoto')
 
         res.status(200).json(trips);
     } catch (err) {
@@ -86,7 +86,7 @@ exports.getTripById = async (req, res) => {
     try {
         const trip = await Trip.findById(req.params.tripId)
             .populate('creator', 'name email')
-            .populate('participants', 'name email');
+            .populate('participants', 'name email profilePhoto')
 
         if (!trip) {
             return res.status(404).json({ message: 'Trip not found' });

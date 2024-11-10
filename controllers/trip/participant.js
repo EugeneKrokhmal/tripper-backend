@@ -41,12 +41,7 @@ exports.addParticipant = async (req, res) => {
             return res.status(404).json({ message: 'Trip not found' });
         }
 
-        // Ensure only the creator can add participants
-        if (!trip.creator.equals(req.user._id)) {
-            return res.status(403).json({ message: 'You are not authorized to add participants' });
-        }
-
-        const participant = await User.findOne({ email });
+        const participant = await User.findOne({ email }).select('name email profilePhoto');
         if (!participant) {
             return res.status(404).json({ message: 'User not found' });
         }
