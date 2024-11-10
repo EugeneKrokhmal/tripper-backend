@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String },
   googleId: { type: String },
   createdAt: { type: Date, default: Date.now },
+  profilePhoto: { type: String }
 });
 
 // Hash the password before saving the user
