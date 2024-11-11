@@ -12,11 +12,11 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
  * @param {string} userName - The name of the user
  */
 const sendRegistrationEmail = async (to, userName, password) => {
-    const homepageLink = `${process.env.APP_URL || 'https://eugenekrokhmal.github.io/tripper-frontend'}/`; // Replace with actual homepage URL
+    const homepageLink = `${process.env.APP_URL || 'https://tripper.cc'}/`;
 
     const msg = {
         to, // Recipient's email address
-        from: 'krokhmaleugen@gmail.com', // Your verified SendGrid sender email address
+        from: 'support@tripper.cc',
         subject: 'WELCOME TO TRIPPER',
         html: `<!--
 * This email was built using Tabular.
@@ -325,7 +325,7 @@ const sendRegistrationEmail = async (to, userName, password) => {
                                                                 <td class="t10"
                                                                     style="background-color:#171717;overflow:hidden;width:250px;text-align:center;line-height:44px;mso-line-height-rule:exactly;mso-text-raise:10px;border-radius:44px 44px 44px 44px;">
                                                                     <!--<![endif]-->
-                                                                    <a class="t9" href="${homepageLink}/#/login"
+                                                                    <a class="t9" href="${homepageLink}/login"
                                                                         style="display:block;margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:44px;font-weight:800;font-style:normal;font-size:12px;text-decoration:none;text-transform:uppercase;letter-spacing:2.4px;direction:ltr;color:#F8F8F8;text-align:center;mso-line-height-rule:exactly;mso-text-raise:10px;"
                                                                         target="_blank">GO!</a>
                                                                 </td>
