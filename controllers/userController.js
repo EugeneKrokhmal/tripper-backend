@@ -47,7 +47,6 @@ exports.uploadPhoto = [
   },
 ];
 
-
 // Get all users
 exports.getAllUsers = async (req, res) => {
   try {
@@ -55,5 +54,82 @@ exports.getAllUsers = async (req, res) => {
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching users', error: err });
+  }
+};
+
+exports.getProfile = async (req, res) => {
+  try {
+      const user = await User.findById(req.user.id).select('-password');
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+      res.status(200).json(user);
+  } catch (error) {
+      res.status(500).json({ message: 'Server error' });
+  }
+};
+
+// Update user details (name, email)
+exports.updateUserDetails = async (req, res) => {
+  const { userName, email } = req.body;
+
+  try {
+      const user = await User.findById(req.user.id);
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+
+      user.name = userName || user.name;
+      user.email = email || user.email;
+
+      await user.save();
+      res.status(200).json({
+          userName: user.name,
+          email: user.email,
+      });
+  } catch (error) {
+      res.status(500).json({ message: 'Server error' });
+  }
+};
+
+// Update user password
+exports.updateUserPassword = async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+
+  try {
+      const user = await User.findById(req.user.id);
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+
+      // Check if current password matches
+      const isMatch = await bcrypt.compare(currentPassword, user.password);
+      if (!isMatch) {
+          return res.status(400).json({ message: 'Current password is incorrect' });
+      }
+
+      // Hash the new password before saving
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(newPassword, salt);
+
+      await user.save();
+      res.status(200).json({ message: 'Password updated successfully' });
+  } catch (error) {
+      res.status(500).json({ message: 'Server error' });
+  }
+};
+
+// Delete user profile
+exports.deleteUser = async (req, res) => {
+  try {
+      const user = await User.findById(req.user.id);
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+
+      await user.remove();
+      res.status(200).json({ message: 'User deleted successfully' });
+  } catch (error) {
+      res.status(500).json({ message: 'Server error' });
   }
 };
