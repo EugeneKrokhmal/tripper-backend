@@ -2,6 +2,8 @@ const User = require('../models/User');
 const sharp = require('sharp');
 const fs = require('fs');
 const multer = require('multer');
+const { sendEmailChangeNotification } = require('../emailService');
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -69,26 +71,42 @@ exports.getProfile = async (req, res) => {
   }
 };
 
-// Update user details (name, email)
 exports.updateUserDetails = async (req, res) => {
-  const { userName, email } = req.body;
+  const { userName, userEmail } = req.body;
 
   try {
-      const user = await User.findById(req.user.id);
-      if (!user) {
-          return res.status(404).json({ message: 'User not found' });
-      }
+    // Find the user by ID
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
 
-      user.name = userName || user.name;
-      user.email = email || user.email;
+    // Store the old email before updating
+    const oldEmail = user.email;
 
-      await user.save();
-      res.status(200).json({
-          userName: user.name,
-          email: user.email,
-      });
+    // Update the user details
+    user.name = userName || user.name;
+    user.email = userEmail || user.email;
+
+    // Save the updated user
+    await user.save();
+
+    // Check if the email has changed
+    if (userEmail && userEmail !== oldEmail) {
+      // Send an email notification to the old email address
+      await sendEmailChangeNotification(oldEmail, userEmail, user.name);
+    }
+
+    res.status(200).json({
+      userName: user.name,
+      email: user.email,
+    });
+
+    console.log(user, userEmail !== oldEmail);
+
   } catch (error) {
-      res.status(500).json({ message: 'Server error' });
+    console.error('Error updating user details:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 };
 
