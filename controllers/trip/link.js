@@ -12,7 +12,7 @@ exports.generateJoinLink = async (req, res) => {
         const joinToken = trip.generateJoinToken();
         await trip.save();
 
-        const joinLink = `${process.env.BASE_URL}/login?redirect=/join/${trip._id}/${joinToken}`;
+        const joinLink = `${process.env.BASE_URL}/#/login?redirect=/join/${trip._id}/${joinToken}`;
         res.status(200).json({ joinLink });
     } catch (error) {
         console.error('Error generating join link:', error);
