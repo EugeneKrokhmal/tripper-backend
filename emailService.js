@@ -12,7 +12,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
  * @param {string} userName - The name of the user
  */
 const sendRegistrationEmail = async (to, userName, password) => {
-    const homepageLink = `${process.env.APP_URL || 'https://tripper.cc'}/`;
+    const homepageLink = `${process.env.APP_URL || 'https://tripper.cc'}/#`;
 
     const msg = {
         to, // Recipient's email address
@@ -709,7 +709,8 @@ const sendEmailChangeNotification = async (oldEmail, newEmail, userName) => {
 // Password Reset Email Function (for the email service)
 // This function should be implemented in the emailService.js file
 const sendPasswordResetEmail = async (email, resetToken, userName) => {
-    const homepageLink = `http://localhost:3000/#`;
+    const homepageLink = `${process.env.APP_URL || 'https://tripper.cc'}/#`;
+
     const resetUrl = `${homepageLink}/reset-password?token=${resetToken}`;
 
     const msg = {
