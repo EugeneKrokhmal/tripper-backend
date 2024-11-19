@@ -5,7 +5,7 @@ const { getTripTimeline, updateTripTimeline } = require('./timeline');
 const { settleDebt } = require('./settlement');
 const { addAdministrator, removeAdministrator } = require('./administrator');
 const { uploadTripImage } = require('./media');
-const { generateJoinLink, joinTrip } = require('./link');
+const { generateJoinLink, joinTrip, inviteUserToTripByEmail } = require('./link');
 
 module.exports = {
     createTrip,
@@ -30,5 +30,6 @@ module.exports = {
     removeAdministrator,
     uploadTripImage,
     generateJoinLink,
-    joinTrip
+    joinTrip,
+    inviteUserToTripByEmail
 };

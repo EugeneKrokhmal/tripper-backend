@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
-const { sendRegistrationEmail } = require('../emailService');
-const { sendPasswordResetEmail } = require('../emailService');
+const { sendRegistrationEmail, sendPasswordResetEmail } = require('../emailService');
 
 // Register User
 exports.register = async (req, res) => {

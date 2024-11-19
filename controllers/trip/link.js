@@ -1,5 +1,8 @@
 const Trip = require('../../models/Trip');
+const User = require('../../models/User');
 const calculateSettlements = require('../../helpers/settlementHelper');
+const { sendInviteEmail } = require('../../emailService');
+
 
 exports.generateJoinLink = async (req, res) => {
     try {
@@ -45,3 +48,37 @@ exports.joinTrip = async (req, res) => {
         res.status(500).json({ message: 'Error joining trip', error: err.message });
     }
 };
+
+exports.inviteUserToTripByEmail = async (req, res) => {
+    try {
+        const { tripId, email, tripName, tripImage, formattedStartDate, formattedEndDate, tripDescription } = req.body;
+
+        if (!tripId || !email) {
+            return res.status(400).json({ message: 'tripId and email are required.' });
+        }
+
+        const trip = await Trip.findById(tripId);
+        if (!trip) {
+            return res.status(404).json({ message: 'Trip not found' });
+        }
+
+        const user = await User.findOne({ email });
+
+        if (user && trip.participants.includes(user._id)) {
+            return res.status(400).json({ message: 'User is already part of this trip.' });
+        }
+
+        // Generate the join token and send the email
+        const joinToken = trip.generateJoinToken();
+        await trip.save();
+
+        const joinLink = `${process.env.BASE_URL}/#/${user ? 'login': 'register'}?redirect=/join/${tripId}/${joinToken}`;
+        await sendInviteEmail(email, joinLink, tripName, tripImage, formattedStartDate, formattedEndDate, tripDescription);
+
+        res.status(200).json({ message: 'Invitation sent successfully.' });
+    } catch (error) {
+        console.error('Error inviting user:', error);
+        res.status(500).json({ message: 'Error inviting user', error: error.message });
+    }
+};
+

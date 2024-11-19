@@ -17,6 +17,7 @@ const {
     calculateFairShare,
     generateJoinLink,
     joinTrip,
+    inviteUserToTripByEmail,
     getExpenseById,
     editExpense,
     getTripTimeline,
@@ -52,6 +53,7 @@ router.post('/trips/:tripId/remove-participant', authMiddleware, removeParticipa
 
 // Join trip
 router.post('/trips/:tripId/generate-join-link', authMiddleware, generateJoinLink);
+router.post('/trips/invite-user-by-email', authMiddleware, inviteUserToTripByEmail);
 router.post('/join/:tripId/:token', authMiddleware, joinTrip);
 router.get('/trips/:tripId/:token', getTripById);
 
