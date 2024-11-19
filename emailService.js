@@ -53,15 +53,15 @@ const sendRegistrationEmail = async (to, userName, password) => {
 <![endif]-->
 </head>
 
-<body id="body" class="t18" style="min-width:100%;Margin:0px;padding:0px;background-color:#242424;">
-    <div class="t17" style="background-color:#242424;">
+<body id="body" class="t18" style="min-width:100%;Margin:0px;padding:0px;background-color:#f8f8f8;">
+    <div class="t17" style="background-color:#f8f8f8;">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
             <tr>
-                <td class="t16" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#242424;"
+                <td class="t16" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#f8f8f8;"
                     valign="top" align="center">
                     <!--[if mso]>
 <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
-<v:fill color="#242424"/>
+<v:fill color="#f8f8f8"/>
 </v:background>
 <![endif]-->
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center"
@@ -72,10 +72,10 @@ const sendRegistrationEmail = async (to, userName, password) => {
                                     style="Margin-left:auto;Margin-right:auto;">
                                     <tr>
                                         <!--[if mso]>
-<td width="600" class="t1" style="padding:48px 0 0 0;">
+<td width="600" class="t1" style="padding:0 0 0 0;">
 <![endif]-->
                                         <!--[if !mso]>-->
-                                        <td class="t1" style="width:600px;padding:48px 0 0 0;">
+                                        <td class="t1" style="width:600px;padding:0 0 0 0;">
                                             <!--<![endif]-->
                                             <div style="font-size:0px;"><img class="t0"
                                                     style="display:block;border:0;height:auto;width:100%;Margin:0;max-width:100%;"
@@ -243,15 +243,15 @@ const sendEmailChangeNotification = async (oldEmail, newEmail, userName) => {
             <![endif]-->
             </head>
 
-            <body id="body" class="t18" style="min-width:100%;Margin:0px;padding:0px;background-color:#242424;">
-                <div class="t17" style="background-color:#242424;">
+            <body id="body" class="t18" style="min-width:100%;Margin:0px;padding:0px;background-color:#f8f8f8;">
+                <div class="t17" style="background-color:#f8f8f8;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
                         <tr>
-                            <td class="t16" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#242424;"
+                            <td class="t16" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#f8f8f8;"
                                 valign="top" align="center">
                                 <!--[if mso]>
             <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
-            <v:fill color="#242424"/>
+            <v:fill color="#f8f8f8"/>
             </v:background>
             <![endif]-->
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center"
@@ -262,10 +262,10 @@ const sendEmailChangeNotification = async (oldEmail, newEmail, userName) => {
                                                 style="Margin-left:auto;Margin-right:auto;">
                                                 <tr>
                                                     <!--[if mso]>
-            <td width="600" class="t1" style="padding:48px 0 0 0;">
+            <td width="600" class="t1" style="padding:0 0 0 0;">
             <![endif]-->
                                                     <!--[if !mso]>-->
-                                                    <td class="t1" style="width:600px;padding:48px 0 0 0;">
+                                                    <td class="t1" style="width:600px;padding:0 0 0 0;">
                                                         <!--<![endif]-->
                                                         <div style="font-size:0px;"><img class="t0"
                                                                 style="display:block;border:0;height:auto;width:100%;Margin:0;max-width:100%;"
@@ -588,15 +588,15 @@ const sendPasswordResetEmail = async (email, resetToken, userName) => {
             <![endif]-->
 </head>
 
-<body id="body" class="t18" style="min-width:100%;Margin:0px;padding:0px;background-color:#242424;">
-    <div class="t17" style="background-color:#242424;">
+<body id="body" class="t18" style="min-width:100%;Margin:0px;padding:0px;background-color:#f8f8f8;">
+    <div class="t17" style="background-color:#f8f8f8;">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
             <tr>
-                <td class="t16" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#242424;"
+                <td class="t16" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#f8f8f8;"
                     valign="top" align="center">
                     <!--[if mso]>
             <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
-            <v:fill color="#242424"/>
+            <v:fill color="#f8f8f8"/>
             </v:background>
             <![endif]-->
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center"
@@ -607,10 +607,10 @@ const sendPasswordResetEmail = async (email, resetToken, userName) => {
                                     style="Margin-left:auto;Margin-right:auto;">
                                     <tr>
                                         <!--[if mso]>
-            <td width="600" class="t1" style="padding:48px 0 0 0;">
+            <td width="600" class="t1" style="padding:0 0 0 0;">
             <![endif]-->
                                         <!--[if !mso]>-->
-                                        <td class="t1" style="width:600px;padding:48px 0 0 0;">
+                                        <td class="t1" style="width:600px;padding:0 0 0 0;">
                                             <!--<![endif]-->
                                             <div style="font-size:0px;"><img class="t0"
                                                     style="display:block;border:0;height:auto;width:100%;Margin:0;max-width:100%;"
@@ -768,15 +768,15 @@ const sendInviteEmail = async (email, tripUrl, tripName, tripImage, formattedSta
             <![endif]-->
             </head>
 
-            <body id="body" class="t18" style="min-width:100%;Margin:0px;padding:0px;background-color:#242424;">
-                <div class="t17" style="background-color:#242424;">
+            <body id="body" class="t18" style="min-width:100%;Margin:0px;padding:0px;background-color:#f8f8f8;">
+                <div class="t17" style="background-color:#f8f8f8;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
                         <tr>
-                            <td class="t16" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#242424;"
+                            <td class="t16" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#f8f8f8;"
                                 valign="top" align="center">
                                 <!--[if mso]>
             <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
-            <v:fill color="#242424"/>
+            <v:fill color="#f8f8f8"/>
             </v:background>
             <![endif]-->
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center"
@@ -787,15 +787,15 @@ const sendInviteEmail = async (email, tripUrl, tripName, tripImage, formattedSta
                                                 style="Margin-left:auto;Margin-right:auto;">
                                                 <tr>
                                                     <!--[if mso]>
-            <td width="600" class="t1" style="padding:48px 0 0 0;">
+            <td width="600" class="t1" style="padding:0 0 0 0;">
             <![endif]-->
                                                     <!--[if !mso]>-->
-                                                    <td class="t1" style="width:600px;padding:48px 0 0 0;">
+                                                    <td class="t1" style="width:600px;padding:0 0 0 0;">
                                                         <!--<![endif]-->
                                                         <div style="font-size:0px;"><img class="t0"
                                                                 style="display:block;border:0;height:auto;width:100%;Margin:0;max-width:100%;"
                                                                 width="600" height="401.25" alt=""
-                                                                src="${tripImage}" />
+                                                                src="${process.env.REACT_APP_API_BASE_URL + '/' + tripImage}" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -855,7 +855,7 @@ const sendInviteEmail = async (email, tripUrl, tripName, tripImage, formattedSta
                                                                                     You are invited to join a trip!</p>
                                                                                 <p class="t6"
                                                                                     style="margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:500;font-style:normal;font-size:14px;text-decoration:none;text-transform:none;letter-spacing:-0.56px;direction:ltr;color:#333333;text-align:center;mso-line-height-rule:exactly;mso-text-raise:2px;">
-                                                                                    ${formattedStartDate} - ${formattedEndtDate}</p>
+                                                                                    <strong>${formattedStartDate} - ${formattedEndtDate}</strong></p>
                                                                                 <p class="t6"
                                                                                     style="margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:500;font-style:normal;font-size:14px;text-decoration:none;text-transform:none;letter-spacing:-0.56px;direction:ltr;color:#333333;text-align:center;mso-line-height-rule:exactly;mso-text-raise:2px;">
                                                                                     ${tripDescription}</p>
