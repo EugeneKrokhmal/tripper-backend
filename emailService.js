@@ -78,7 +78,7 @@ const sendRegistrationEmail = async (to, userName, password) => {
                                         <td class="t1" style="width:600px;padding:0 0 0 0;">
                                             <!--<![endif]-->
                                             <div style="font-size:0px;"><img class="t0"
-                                                    style="display:block;border:0;height:auto;width:100%;Margin:0;max-width:100%;"
+                                                    style="display:block;border:0;height:200px;object-fit:cover;width:100%;Margin:0;max-width:100%;"
                                                     width="600" height="401.25" alt=""
                                                     src="https://8486e2b6-284e-405d-9bb3-e10807f348c6.b-cdn.net/e/437ae0a1-ea78-4c33-af9f-1c68d83614a8/b14a60e2-1fde-4b15-90d9-1c540f36e1e9.jpeg" />
                                             </div>
@@ -268,7 +268,7 @@ const sendEmailChangeNotification = async (oldEmail, newEmail, userName) => {
                                                     <td class="t1" style="width:600px;padding:0 0 0 0;">
                                                         <!--<![endif]-->
                                                         <div style="font-size:0px;"><img class="t0"
-                                                                style="display:block;border:0;height:auto;width:100%;Margin:0;max-width:100%;"
+                                                                style="display:block;border:0;height:200px;object-fit:cover;width:100%;Margin:0;max-width:100%;"
                                                                 width="600" height="401.25" alt=""
                                                                 src="https://8486e2b6-284e-405d-9bb3-e10807f348c6.b-cdn.net/e/437ae0a1-ea78-4c33-af9f-1c68d83614a8/b14a60e2-1fde-4b15-90d9-1c540f36e1e9.jpeg" />
                                                         </div>
@@ -613,7 +613,7 @@ const sendPasswordResetEmail = async (email, resetToken, userName) => {
                                         <td class="t1" style="width:600px;padding:0 0 0 0;">
                                             <!--<![endif]-->
                                             <div style="font-size:0px;"><img class="t0"
-                                                    style="display:block;border:0;height:auto;width:100%;Margin:0;max-width:100%;"
+                                                    style="display:block;border:0;height:200px;object-fit:cover;width:100%;Margin:0;max-width:100%;"
                                                     width="600" height="401.25" alt=""
                                                     src="https://8486e2b6-284e-405d-9bb3-e10807f348c6.b-cdn.net/e/437ae0a1-ea78-4c33-af9f-1c68d83614a8/b14a60e2-1fde-4b15-90d9-1c540f36e1e9.jpeg" />
                                             </div>
@@ -793,7 +793,7 @@ const sendInviteEmail = async (email, tripUrl, tripName, tripImage, formattedSta
                                                     <td class="t1" style="width:600px;padding:0 0 0 0;">
                                                         <!--<![endif]-->
                                                         <div style="font-size:0px;"><img class="t0"
-                                                                style="display:block;border:0;height:auto;width:100%;Margin:0;max-width:100%;"
+                                                                style="display:block;border:0;height:200px;object-fit:cover;width:100%;Margin:0;max-width:100%;"
                                                                 width="600" height="401.25" alt=""
                                                                 src="${process.env.REACT_APP_API_BASE_URL + '/' + tripImage}" />
                                                         </div>
@@ -876,7 +876,7 @@ const sendInviteEmail = async (email, tripUrl, tripName, tripImage, formattedSta
                                                                             <td class="t10"
                                                                                 style="background-color:#171717;overflow:hidden;width:250px;text-align:center;line-height:44px;mso-line-height-rule:exactly;mso-text-raise:10px;border-radius:44px 44px 44px 44px;">
                                                                                 <!--<![endif]-->
-                                                                                <a class="t9" href="${tripUrl}/login"
+                                                                                <a class="t9" href="${tripUrl}"
                                                                                     style="display:block;margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:44px;font-weight:800;font-style:normal;font-size:12px;text-decoration:none;text-transform:uppercase;letter-spacing:2.4px;direction:ltr;color:#F8F8F8;text-align:center;mso-line-height-rule:exactly;mso-text-raise:10px;"
                                                                                     target="_blank">Join</a>
                                                                             </td>
