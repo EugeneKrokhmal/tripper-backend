@@ -1,53 +1,51 @@
 const calculateSettlements = (expenses, participants, previousSettlements = [], settlementHistory = []) => {
     const balances = {};
 
-    // Initialize balances for each participant
-    participants.forEach(p => {
-        balances[p._id] = 0;
+    // Initialize balances for all participants
+    participants.forEach(participant => {
+        balances[participant] = 0;
     });
 
-    // Loop through each expense and adjust balances
-    expenses.forEach(expense => {
-        const amountPerParticipant = expense.amount / expense.splitParticipants.length;
+    // Process each expense
+    expenses.forEach(({ amount, responsibleUserId, splitParticipants }) => {
+        const perParticipantShare = amount / splitParticipants.length;
 
-        expense.splitParticipants.forEach(participantId => {
-            if (participantId !== expense.responsibleUserId) {
-                // Subtract the share from participant
-                balances[participantId] -= amountPerParticipant;
-                // Add the same amount to the responsible user
-                balances[expense.responsibleUserId] += amountPerParticipant;
+        // Adjust balances
+        splitParticipants.forEach(participantId => {
+            if (participantId !== responsibleUserId) {
+                balances[participantId] -= perParticipantShare; // Subtract from debtor
+                balances[responsibleUserId] += perParticipantShare; // Add to creditor
             }
         });
     });
 
-    // Apply unsettled amounts from previous settlements and subtract already settled amounts
-    settlementHistory.forEach(history => {
-        if (balances[history.debtor]) {
-            balances[history.debtor] += history.amount; // Add the amount already settled
-        }
-        if (balances[history.creditor]) {
-            balances[history.creditor] -= history.amount; // Subtract the settled amount from the creditor
-        }
+    // Adjust balances based on settlement history
+    settlementHistory.forEach(({ debtor, creditor, amount }) => {
+        if (balances[debtor] !== undefined) balances[debtor] += amount;
+        if (balances[creditor] !== undefined) balances[creditor] -= amount;
     });
 
-    const settlements = [];
-    const creditors = [];
+    // Separate debtors and creditors
     const debtors = [];
-
-    // Separate creditors and debtors based on their final balances
+    const creditors = [];
     Object.entries(balances).forEach(([participantId, balance]) => {
-        if (balance > 0) {
-            creditors.push({ participantId, amount: balance });
-        } else if (balance < 0) {
-            debtors.push({ participantId, amount: -balance });
+        if (balance < 0) {
+            debtors.push({ participantId, balance: -balance }); // Owes money
+        } else if (balance > 0) {
+            creditors.push({ participantId, balance }); // Is owed money
         }
     });
 
-    // Match debtors with creditors to calculate new settlements
-    while (debtors.length && creditors.length) {
+    // Sort debtors and creditors for precise matching
+    debtors.sort((a, b) => a.balance - b.balance); // Smallest debts first
+    creditors.sort((a, b) => a.balance - b.balance); // Smallest credits first
+
+    // Simplify settlements
+    const settlements = [];
+    while (debtors.length > 0 && creditors.length > 0) {
         const debtor = debtors[0];
         const creditor = creditors[0];
-        const settlementAmount = Math.min(debtor.amount, creditor.amount);
+        const settlementAmount = Math.min(debtor.balance, creditor.balance);
 
         settlements.push({
             debtor: debtor.participantId,
@@ -55,11 +53,11 @@ const calculateSettlements = (expenses, participants, previousSettlements = [], 
             amount: settlementAmount,
         });
 
-        debtor.amount -= settlementAmount;
-        creditor.amount -= settlementAmount;
+        debtor.balance -= settlementAmount;
+        creditor.balance -= settlementAmount;
 
-        if (debtor.amount === 0) debtors.shift();
-        if (creditor.amount === 0) creditors.shift();
+        if (debtor.balance === 0) debtors.shift();
+        if (creditor.balance === 0) creditors.shift();
     }
 
     return settlements;
