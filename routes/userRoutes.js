@@ -15,6 +15,6 @@ router.get('/user/profile', authMiddleware, getProfile);
 router.post('/user/upload-photo', authMiddleware, uploadPhoto);
 router.put('/user/update', authMiddleware, updateUserDetails);
 router.put('/user/update-password', authMiddleware, updateUserPassword);
-router.delete('/user/delete', authMiddleware, deleteUser);
+router.delete('/user/remove-from-trip', authMiddleware, deleteUser);
 
 module.exports = router;
