@@ -23,6 +23,7 @@ exports.createTrip = async (req, res) => {
             currency,
             creator: userId,
             participants: [userId],
+            administrators: [userId],
             location: {
                 destination,
                 coordinates: {
@@ -30,8 +31,8 @@ exports.createTrip = async (req, res) => {
                     lng: locationData.lng,
                 },
             },
-            startDate,  // Store start date
-            endDate,    // Store end date
+            startDate,
+            endDate,
         });
 
         await trip.save();
