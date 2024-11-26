@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const { type } = require('os');
 
 const activitySchema = new mongoose.Schema({
+    author: { type: String, required: false },
     name: { type: String, required: true },
     description: { type: String, required: false },
     time: { type: String, required: true },
