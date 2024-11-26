@@ -18,7 +18,7 @@ const sendRegistrationEmail = async (to, userName, password) => {
 
     const msg = {
         to, // Recipient's email address
-        from: 'support@tripper.cc',
+        from: 'tripper@tripper.cc',
         subject: 'WELCOME TO TRIPPER',
         html: `
 <!DOCTYPE html
@@ -208,7 +208,7 @@ const sendEmailChangeNotification = async (oldEmail, newEmail, userName) => {
 
     const msg = {
         to: oldEmail,
-        from: 'support@tripper.cc',
+        from: 'tripper@tripper.cc',
         subject: 'Your Tripper Email Address Has Been Updated',
         html: `
             <!DOCTYPE html
@@ -391,7 +391,7 @@ const sendPasswordResetEmail = async (email, resetToken, userName) => {
 
     const msg = {
         to: email,
-        from: 'support@tripper.cc',
+        from: 'tripper@tripper.cc',
         subject: 'Your Tripper Email Address Has Been Updated',
         html: `
 <!DOCTYPE html
@@ -733,7 +733,7 @@ const sendPasswordResetEmail = async (email, resetToken, userName) => {
 const sendInviteEmail = async (email, tripUrl, tripName, tripImage, formattedStartDate, formattedEndtDate, tripDescription) => {
     const msg = {
         to: email,
-        from: 'support@tripper.cc',
+        from: 'tripper@tripper.cc',
         subject: `Your Invitation to ${tripName}`,
         html: `
             <!DOCTYPE html
