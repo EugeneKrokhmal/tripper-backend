@@ -91,14 +91,6 @@ tripper-backend/
   ```
 - Tokens are generated during login and are validated via middleware.
 
-## Environment Variables
-The `.env` file includes the following variables:
-
-```
-PORT=5000
-DB_URI=mongodb://localhost:27017/app_db
-JWT_SECRET=your_secret_key
-```
 
 ## Running Locally
 1. Clone the repository:
